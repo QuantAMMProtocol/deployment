@@ -1,0 +1,15 @@
+{
+  "ChainlinkOracle": "0xebd5B40FF5cF434c1474b9dD13B6127eEA2a55Cb",
+  "ChainlinkEthOracle": "0xebd5B40FF5cF434c1474b9dD13B6127eEA2a55Cb",
+  "ChainlinkBtcOracle": "0xebd5B40FF5cF434c1474b9dD13B6127eEA2a55Cb",
+  "ChainlinkUsdcOracle": "0xebd5B40FF5cF434c1474b9dD13B6127eEA2a55Cb",
+  "UpdateWeightRunner": "0xc840e742C9CC87F08C14537C6b6515cD952AC789",
+  "QuantAMMWeightedPoolFactory": "0x611C4A8c8479FA2Ec6dCE287F0adBFF694d599e9",
+  "AntiMomentumUpdateRule": "0x5104f2e6CB97334cD3c1BD000fAe871d77B66D15",
+  "MomentumUpdateRule": "0x7C7D2483c598F61207703D28Da687f8c32292d53",
+  "PowerChannelUpdateRule": "0x9f81F2cEc6d482c2D115c3D39385e967e658a056",
+  "ChannelFollowingUpdateRule": "0xFcf7b67b68584De9B94b769D983cf3075bA89256",
+  "DifferenceMomentumUpdateRule": "0xbD843C6212398045Ec4EdeFd8A88A7986Be46Fd8",
+  "MinimumVarianceUpdateRule": "0xd1B16718Cf8573BF00F1999181828bb0bFC0899F",
+  "QuantAMMWeightedPool": "0xCd2Ca3bBe68Fb83E9B1f1217deCF3Fb01dbFb01E"
+}
