@@ -26,7 +26,6 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
 
   const ruleArgs = [updateWeightRunner.address];
 
-  const antiMomentumUpdateRule = await task.deployAndVerify('AntiMomentumUpdateRule', ruleArgs, from, force);
 
   await task.deployAndVerify('MomentumUpdateRule', ruleArgs, from, force);
   await task.deployAndVerify('PowerChannelUpdateRule', ruleArgs, from, force);
@@ -34,6 +33,8 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
   await task.deployAndVerify('DifferenceMomentumUpdateRule', ruleArgs, from, force);
   await task.deployAndVerify('MinimumVarianceUpdateRule', ruleArgs, from, force);
 
+  const antiMomentumUpdateRule = await task.deployAndVerify('MomentumUpdateRule', ruleArgs, from, force);
+  
   const factoryArgs = [
     input.Vault,
     input.PauseWindowDuration,
@@ -55,6 +56,10 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
       input.ChainlinkDataFeedUSDC,
       input.WBTC,
       input.ChainlinkDataFeedBTC,
+      input.WETH,
+      input.ChainlinkFeedETH,
+      input.DAI,
+      input.ChainlinkDataFeedUSDC,
       antiMomentumUpdateRule.address,
       salt,
       accountAddress
