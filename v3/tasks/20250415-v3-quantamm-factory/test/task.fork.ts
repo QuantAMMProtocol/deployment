@@ -28,7 +28,7 @@ describeForkTest('QuantAMMPool', 'sepolia', 7894343, function () {
   });
 
   before('setup contracts and parameters', async () => {
-    const antiMomentumUpdateRule: Contract = await task.deployedInstance('AntiMomentumUpdateRule');
+    const antiMomentumUpdateRule: Contract = await task.deployedInstance('MomentumUpdateRule');
     const updateWeightRunner = await task.deployedInstance('UpdateWeightRunner');
 
     input = task.input() as QuantAMMDeploymentInputParams;
@@ -44,6 +44,10 @@ describeForkTest('QuantAMMPool', 'sepolia', 7894343, function () {
       input.USDC,
       input.ChainlinkDataFeedUSDC,
       input.WBTC,
+      input.ChainlinkFeedETH,
+      input.WETH,
+      input.ChainlinkDataFeedUSDC,
+      input.DAI,
       input.ChainlinkDataFeedBTC,
       antiMomentumUpdateRule.address,
       salt,

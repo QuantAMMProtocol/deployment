@@ -7,6 +7,7 @@ import { BigNumber } from 'ethers';
 export type QuantAMMDeploymentInputParams = {
   Vault: string;
   PauseWindowDuration: number;
+  UpdateWeightRunner: string;
   ETH: string;
   WBTC: string;
   PAXG: string;
@@ -22,27 +23,34 @@ export type QuantAMMDeploymentInputParams = {
 //TODO double check with Jeff this is network specific
 const Vault = new Task('20241204-v3-vault', TaskMode.READ_ONLY);
 
+const EthChainlinkOracleWrapper = new Task('20250419-v3-eth-oraclewrapper', TaskMode.READ_ONLY);
+
+const BtcChainlinkOracleWrapper = new Task('20250419-v3-btc-oraclewrapper', TaskMode.READ_ONLY);
+
+const UsdcChainlinkOracleWrapper = new Task('20250419-v3-usdc-oraclewrapper', TaskMode.READ_ONLY);
+
+const PaxgChainlinkOracleWrapper = new Task('20250419-v3-paxg-oraclewrapper', TaskMode.READ_ONLY);
+
+const UpdateWeightRunner = new Task('20250419-v3-update-weight-runner', TaskMode.READ_ONLY);
+
 const BaseVersion = { version: 1, deployment: '20250419-v3-quantamm' };
 
 export default {
   Vault,
+  ChainlinkFeedETH: EthChainlinkOracleWrapper,
+  ChainlinkDataFeedBTC: BtcChainlinkOracleWrapper,
+  ChainlinkDataFeedPAXG: PaxgChainlinkOracleWrapper,
+  ChainlinkDataFeedUSDC: UsdcChainlinkOracleWrapper,
   PauseWindowDuration: 4 * 12 * MONTH,
   FactoryVersion: JSON.stringify({ name: 'QuantAMMWeightedPoolFactory', ...BaseVersion }),
   PoolVersion: JSON.stringify({ name: 'QuantAMMWeightedPool', ...BaseVersion }),
+  UpdateWeightRunner,
   sepolia: {
-    ChainlinkFeedETH: '0xebd5B40FF5cF434c1474b9dD13B6127eEA2a55Cb',
-    ChainlinkDataFeedBTC: '0x8381b86e307112bB88c3a15Dd0a46610AE53D372',
-    ChainlinkDataFeedPAXG: '0xebd5B40FF5cF434c1474b9dD13B6127eEA2a55Cb', //no PAXG on Sepolia
-    ChainlinkDataFeedUSDC: '0x8A493D14A9870f8D02027009273De605a1e7f79e',
     WBTC: '0x29f2D40B0605204364af54EC677bD022dA425d03',
     PAXG: '0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9', //no PAXG on Sepolia
     USDC: '0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8',
   },
   mainnet: {
-    ChainlinkFeedETH: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419', //https://etherscan.io/address/0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419
-    ChainlinkDataFeedBTC: '0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c', // https://etherscan.io/address/0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c
-    ChainlinkDataFeedPAXG: '0x9944D86CEB9160aF5C5feB251FD671923323f8C3', //https://etherscan.io/address/0x9944D86CEB9160aF5C5feB251FD671923323f8C3
-    ChainlinkDataFeedUSDC: '0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6', //https://etherscan.io/address/0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6
     WBTC: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', //https://etherscan.io/token/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599
     PAXG: '0x45804880de22913dafe09f4980848ece6ecbaf78', //https://etherscan.io/token/0x45804880de22913dafe09f4980848ece6ecbaf78
     USDC: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', //https://etherscan.io/token/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48

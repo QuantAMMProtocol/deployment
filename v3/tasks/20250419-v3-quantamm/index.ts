@@ -9,11 +9,7 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
   const accounts = await hre.ethers.getSigners();
   const accountAddress = accounts[0].address;
 
-  const updateWeightRunnerArgs = [accountAddress, input.ChainlinkFeedETH];
-  const updateWeightRunner = await task.deployAndVerify('UpdateWeightRunner', updateWeightRunnerArgs, from, force);
-  await task.save({ UpdateWeightRunner: updateWeightRunner });
-
-  const ruleArgs = [updateWeightRunner.address];
+  const ruleArgs = [input.UpdateWeightRunner];
 
   await task.deployAndVerify('MomentumUpdateRule', ruleArgs, from, force);
   await task.deployAndVerify('ChannelFollowingUpdateRule', ruleArgs, from, force);
@@ -27,7 +23,7 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
     input.PauseWindowDuration,
     input.FactoryVersion,
     input.PoolVersion,
-    updateWeightRunner.address,
+    input.UpdateWeightRunner,
   ];
 
   const factory = await task.deployAndVerify('QuantAMMWeightedPoolFactory', factoryArgs, from, force);

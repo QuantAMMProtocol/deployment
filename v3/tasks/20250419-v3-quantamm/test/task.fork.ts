@@ -30,12 +30,19 @@ describeForkTest('QuantAMMPool', 'sepolia', 8140847, function () {
   before('setup contracts and parameters', async () => {
     const powerChannelRule: Contract = await task.deployedInstance('PowerChannelUpdateRule');
     rule = powerChannelRule;
-    updateWeightRunner = await task.deployedInstance('UpdateWeightRunner');
+    const updateWeightRunnerTask = new Task(
+      '20250419-v3-update-weight-runner',
+      TaskMode.READ_ONLY,
+      getForkedNetwork(hre)
+    );
+    updateWeightRunner = await updateWeightRunnerTask.deployedInstance('UpdateWeightRunner');
     input = task.input() as QuantAMMDeploymentInputParams;
 
+    //this will have to be done manually by the mutlisig admin prior to pool creation.
     await updateWeightRunner.addOracle(input.ChainlinkDataFeedBTC);
     await updateWeightRunner.addOracle(input.ChainlinkDataFeedUSDC);
     await updateWeightRunner.addOracle(input.ChainlinkFeedETH);
+    await updateWeightRunner.addOracle(input.ChainlinkDataFeedPAXG);
 
     const salt = ethers.utils.keccak256(
       ethers.utils.defaultAbiCoder.encode(['address', 'uint256'], [sender.address, Math.floor(Date.now() / 1000)])

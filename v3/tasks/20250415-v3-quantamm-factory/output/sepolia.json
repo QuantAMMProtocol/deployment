@@ -8,6 +8,5 @@
   "ChannelFollowingUpdateRule": "0xb500940b97c9157840275658bA930aeA2E148dBb",
   "DifferenceMomentumUpdateRule": "0x0DE34B17E14468e989c33e3CF11Ed9f56EB496f2",
   "MinimumVarianceUpdateRule": "0x40f5533fDA317756c4dAF1edD965030081a8BD49",
-  "QuantAMMWeightedPoolFactory": "0x7493F1AbeD1BdC6A160b62e676a5C44F8dFD7c60",
-  "QuantAMMWeightedPool": "0x6663545aF63bC3268785Cf859f0608506759EBe8"
+  "QuantAMMWeightedPoolFactory": "0x7493F1AbeD1BdC6A160b62e676a5C44F8dFD7c60"
 }
