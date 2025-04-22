@@ -11,14 +11,15 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
   console.log('accountAddress', accountAddress);
 
   console.log('input', input.QuantAMMAdmin);
-
+  let admin = input.QuantAMMAdmin;
   //test cases and deployment
   if (!input.QuantAMMAdmin || input.QuantAMMAdmin == ZERO_ADDRESS) {
     console.log('Setting QuantAMMAdmin to sender address');
-    input.QuantAMMAdmin = accountAddress;
+    admin = accountAddress;
   }
 
-  const updateWeightRunnerArgs = [input.QuantAMMAdmin, input.ChainlinkFeedETH];
+  const updateWeightRunnerArgs = [admin, input.ChainlinkFeedETH];
+  console.log('updateWeightRunnerArgs', updateWeightRunnerArgs);
   const updateWeightRunner = await task.deployAndVerify('UpdateWeightRunner', updateWeightRunnerArgs, from, force);
   await task.save({ UpdateWeightRunner: updateWeightRunner });
 };

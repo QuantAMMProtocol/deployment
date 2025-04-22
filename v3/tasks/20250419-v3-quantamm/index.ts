@@ -11,6 +11,8 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
 
   const ruleArgs = [input.UpdateWeightRunner];
 
+  console.log(ruleArgs);
+
   await task.deployAndVerify('MomentumUpdateRule', ruleArgs, from, force);
   await task.deployAndVerify('ChannelFollowingUpdateRule', ruleArgs, from, force);
   await task.deployAndVerify('DifferenceMomentumUpdateRule', ruleArgs, from, force);
@@ -62,19 +64,17 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
       await task.save({ QuantAMMWeightedPool: safeHavenPoolAddress });
     }
 
-    const safeHavenPool = await task.instanceAt('QuantAMMWeightedPool', task.output()['QuantAMMWeightedPool']);
+    const poolParams = {
+      name: params.name,
+      symbol: params.symbol,
+      numTokens: params.normalizedWeights.length,
+      version: await factory.getPoolVersion(),
+      updateWeightRunner: input.UpdateWeightRunner,
+      poolRegistry: params.poolRegistry,
+      poolDetails: params.poolDetails,
+    };
 
-    const poolParams = createPoolParams(
-      input.WBTC,
-      input.ChainlinkDataFeedBTC,
-      input.PAXG,
-      input.ChainlinkDataFeedPAXG,
-      input.USDC,
-      input.ChainlinkDataFeedUSDC,
-      powerChannelRule.address,
-      salt,
-      accountAddress
-    );
+    const safeHavenPool = await task.instanceAt('QuantAMMWeightedPool', task.output()['QuantAMMWeightedPool']);
 
     // We are now ready to verify the Pool
     await task.verify('QuantAMMWeightedPool', safeHavenPool.address, [poolParams, input.Vault]);
