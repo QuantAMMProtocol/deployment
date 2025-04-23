@@ -1,4 +1,3 @@
-import { ZERO_ADDRESS } from '@helpers/constants';
 import { Task, TaskMode } from '@src';
 
 const EthChainlinkOracleWrapper = new Task('20250419-v3-eth-oraclewrapper', TaskMode.READ_ONLY);
@@ -10,7 +9,7 @@ export type QuantAMMDeploymentInputParams = {
 
 export default {
   sepolia: {
-    QuantAMMAdmin: ZERO_ADDRESS,
+    QuantAMMAdmin: '0xd785201fd2D9be7602F6682296Bb415530C027Ef',
     ChainlinkFeedETH: EthChainlinkOracleWrapper,
   },
   mainnet: {

@@ -2,6 +2,7 @@ import hre from 'hardhat';
 import { Task, TaskRunOptions } from '@src';
 import { QuantAMMDeploymentInputParams } from './input';
 import { ZERO_ADDRESS } from '@helpers/constants';
+import { Contract } from 'ethers';
 
 export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise<void> => {
   const input = task.input() as QuantAMMDeploymentInputParams;
@@ -21,5 +22,9 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
   const updateWeightRunnerArgs = [admin, input.ChainlinkFeedETH];
   console.log('updateWeightRunnerArgs', updateWeightRunnerArgs);
   const updateWeightRunner = await task.deployAndVerify('UpdateWeightRunner', updateWeightRunnerArgs, from, force);
+  console.log('updateWeightRunner', updateWeightRunner.interface.getSighash('addOracle'));
+  const pool = '0x6fE415F986b12Da4381d7082CA0223a0a49771A9';
+  console.log('Calldata:', updateWeightRunner.interface.encodeFunctionData('addOracle', [pool]));
+
   await task.save({ UpdateWeightRunner: updateWeightRunner });
 };
