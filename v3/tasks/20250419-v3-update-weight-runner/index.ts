@@ -24,7 +24,17 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
   const updateWeightRunner = await task.deployAndVerify('UpdateWeightRunner', updateWeightRunnerArgs, from, force);
   console.log('updateWeightRunner', updateWeightRunner.interface.getSighash('addOracle'));
   const pool = '0x6fE415F986b12Da4381d7082CA0223a0a49771A9';
-  console.log('Calldata:', updateWeightRunner.interface.encodeFunctionData('addOracle', [pool]));
+  const registryEntry = 17;
+  console.log('add oracle Calldata:', updateWeightRunner.interface.encodeFunctionData('addOracle', [pool]));
+  console.log(
+    'setApprovedActionsForPool Calldata:',
+    updateWeightRunner.interface.encodeFunctionData('setApprovedActionsForPool', [pool, registryEntry])
+  );
+
+  console.log(
+    'InitialisePoolLastRunTime Calldata:',
+    updateWeightRunner.interface.encodeFunctionData('InitialisePoolLastRunTime', [pool, registryEntry])
+  );
 
   await task.save({ UpdateWeightRunner: updateWeightRunner });
 };
