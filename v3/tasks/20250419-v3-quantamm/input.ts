@@ -120,20 +120,28 @@ export async function createPoolParams(
     rateProvider: rateProviders[i] || ZERO_ADDRESS,
     tokenType: 0,
   }));
-  //NOTE: this is order BTC, PAXG, USDC!
+  //NOTE: this is order BTC, PAXG, USDC
   const lambdas = [bn('811035769801363300'), bn('781490597023096500'), bn('289524066401247700')];
+  //const lambdas = [bn('0.811035769801363300'), bn('0.781490597023096500'), bn('0.289524066401247700')];
 
   //TODO MW/CH change to initialised moving avg values
   const movingAverages = [bn('1000000000000000000'), bn('1000000000000000000'), bn('1000000000000000000')];
+  //const movingAverages = [bn('1000000000000000000'), bn('1000000000000000000'), bn('1000000000000000000')];
 
   //TODO MW/CH change to initialised intermediate values
   const intermediateValues = [bn('1000000000000000000'), bn('1000000000000000000'), bn('1000000000000000000')];
+  //const intermediateValues = [bn('1000000000000000000'), bn('1000000000000000000'), bn('1000000000000000000')];
 
   //NOTE: this is order BTC, PAXG, USDC!
   const parameters = [
     [bn('1390968414526753800000'), bn('806695362159777100000'), bn('255928993330991830000')], //kappa
     [bn('1531232793117663900'), bn('1000000000000000100'), bn('1000000000000000100')], //exponents
-  ]; //exponents
+  ];
+
+  //const parameters = [
+  //  [bn('1390.968414526753800000'), bn('806.695362159777100000'), bn('255.928993330991830000')], //kappa
+  //  [bn('1.531232793117663900'), bn('1.000000000000000100'), bn('1.000000000000000100')], //exponents
+  //];
 
   //again this is in InputHelper.sortTokens order
   const oracles = [
@@ -149,8 +157,6 @@ export async function createPoolParams(
   const poolDetails = [
     ['overview', 'adaptabilityScore', 'number', '5'],
     ['strategy', 'name', 'string', 'Power Channel'],
-    ['strategy', 'memoryDays', 'array', '[TODO]'],
-    ['strategy', 'aggressiveness', 'number', 'TODO'],
   ];
 
   const poolSettings: PoolSettings = {
@@ -179,7 +185,6 @@ export async function createPoolParams(
     //TODO confirm with Balancer what the swap fee percentage should be
     swapFeePercentage: fp(0.04),
     poolHooksContract: ZERO_ADDRESS,
-    //TODO confirm if this should be set to true
     enableDonation: false,
     disableUnbalancedLiquidity: false,
     salt: salt,
@@ -188,7 +193,7 @@ export async function createPoolParams(
     _initialMovingAverages: movingAverages,
     _initialIntermediateValues: intermediateValues,
     _oracleStalenessThreshold: bn('86760'), //1 day and 1 hour
-    poolRegistry: bn('20'), //1 perform update, 3 getdata, 16 admin controlled.
+    poolRegistry: bn('17'), //1 perform update, 3 getdata, 16 admin controlled.
     poolDetails,
   };
 }

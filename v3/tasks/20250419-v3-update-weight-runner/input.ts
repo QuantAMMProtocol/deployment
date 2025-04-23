@@ -13,7 +13,7 @@ export default {
     ChainlinkFeedETH: EthChainlinkOracleWrapper,
   },
   mainnet: {
-    QuantAMMAdmin: 'TODO',
+    QuantAMMAdmin: '0xd785201fd2D9be7602F6682296Bb415530C027Ef',
     ChainlinkFeedETH: EthChainlinkOracleWrapper,
   },
 };
