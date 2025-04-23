@@ -124,17 +124,11 @@ export async function createPoolParams(
   const lambdas = [bn('811035769801363300'), bn('781490597023096500'), bn('289524066401247700')];
   //const lambdas = [bn('0.811035769801363300'), bn('0.781490597023096500'), bn('0.289524066401247700')];
 
-  //TODO MW/CH change to initialised moving avg values
   const movingAverages = [bn('86463939416093999000000'), bn('3347147299917867300000'), bn('999862802587441200')];
   //const movingAverages = [bn('86463.939416093999'), bn('3347.1472999178673'), bn('0.99986280258744120')];
 
-  //TODO MW/CH change to initialised intermediate values
-  const intermediateValues = [
-    bn('63796892763388649000000'),
-    bn('1253725568490449900000'),
-    bn('-893075161887259900000000'),
-  ];
-  //const intermediateValues = [bn('63796.892763388649'), bn('1253.7255684904499'), bn('-893075.1618872599')];
+  const intermediateValues = [bn('63796892763388649000000'), bn('1253725568490449900000'), bn('-000089307516188725')];
+  //const intermediateValues = [bn('63796.892763388649'), bn('1253.7255684904499'), bn('-0.00008930751618872599')];
 
   //NOTE: this is order BTC, PAXG, USDC
   const parameters = [
@@ -154,7 +148,6 @@ export async function createPoolParams(
     [usdcOracle], // USDC
   ];
 
-  //TODO MW/CH change to initialised weights
   const normalizedWeights = [fp(0.03), fp(0.94), fp(0.03)];
   const intNormalizedWeights = [...normalizedWeights];
 
@@ -186,7 +179,6 @@ export async function createPoolParams(
       swapFeeManager: ZERO_ADDRESS,
       poolCreator: ZERO_ADDRESS,
     },
-    //TODO confirm with Balancer what the swap fee percentage should be
     swapFeePercentage: fp(0.04),
     poolHooksContract: ZERO_ADDRESS,
     enableDonation: false,
