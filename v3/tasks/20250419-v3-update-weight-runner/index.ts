@@ -26,6 +26,19 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
   console.log('updateWeightRunner', updateWeightRunner.interface.getSighash('addOracle'));
   const pool = '0x6fE415F986b12Da4381d7082CA0223a0a49771A9';
   const registryEntry = bn('17');
+  /**
+   * 
+   * mainnet
+   * 
+   * updateWeightRunner 0xdf5dd1a5
+eth 0x34eF06b7b54F6928AB9B3b8149f9C652e54faB53
+add oracle Calldata: 0xdf5dd1a50000000000000000000000006fe415f986b12da4381d7082ca0223a0a49771a9
+setApprovedActionsForPool Calldata: 0xaebdc7f30000000000000000000000006fe415f986b12da4381d7082ca0223a0a49771a90000000000000000000000000000000000000000000000000000000000000011
+InitialisePoolLastRunTime Calldata: 0xce768b320000000000000000000000006fe415f986b12da4381d7082ca0223a0a49771a9000000000000000000000000000000000000000000000000000000000000000a
+
+
+   */
+  console.log('eth', input.ChainlinkFeedETH);
   console.log('add oracle Calldata:', updateWeightRunner.interface.encodeFunctionData('addOracle', [pool]));
   console.log(
     'setApprovedActionsForPool Calldata:',
