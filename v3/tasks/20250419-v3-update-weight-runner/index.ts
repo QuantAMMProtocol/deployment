@@ -36,6 +36,14 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
     'InitialisePoolLastRunTime Calldata:',
     updateWeightRunner.interface.encodeFunctionData('InitialisePoolLastRunTime', [pool, futureDate])
   );
+  /**
+   * updateWeightRunner 0xdf5dd1a5
+add oracle Calldata: 0xdf5dd1a50000000000000000000000006fe415f986b12da4381d7082ca0223a0a49771a9
+setApprovedActionsForPool Calldata: 0xaebdc7f30000000000000000000000006fe415f986b12da4381d7082ca0223a0a49771a90000000000000000000000000000000000000000000000000000000000000011
+InitialisePoolLastRunTime Calldata: 0xce768b320000000000000000000000006fe415f986b12da4381d7082ca0223a0a49771a9000000000000000000000000000000000000000000000000000000000000000a
+   * 
+   * 
+   */
 
   await task.save({ UpdateWeightRunner: updateWeightRunner });
 };
