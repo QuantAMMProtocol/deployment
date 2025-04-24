@@ -2,7 +2,6 @@ import hre from 'hardhat';
 import { Task, TaskRunOptions } from '@src';
 import { QuantAMMDeploymentInputParams } from './input';
 import { ZERO_ADDRESS } from '@helpers/constants';
-import { Contract } from 'ethers';
 import { bn } from '@helpers/numbers';
 
 export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise<void> => {
