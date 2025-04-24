@@ -164,14 +164,14 @@ export async function createPoolParams(
     lambda: lambdas,
     epsilonMax: fp(0.432),
     absoluteWeightGuardRail: fp(0.03),
-    maxTradeSizeRatio: fp(0.01),
+    maxTradeSizeRatio: fp(0.1),
     ruleParameters: parameters,
     poolManager: sender,
   };
 
   return {
-    name: 'Safe Haven BTF',
-    symbol: 'SH-BTF',
+    name: 'The Safe Haven - BTC-PAXG-USDC',
+    symbol: 'SAFEHAVEN-BTF',
     tokens: tokenConfig,
     normalizedWeights,
     roleAccounts: {
@@ -179,7 +179,7 @@ export async function createPoolParams(
       swapFeeManager: ZERO_ADDRESS,
       poolCreator: ZERO_ADDRESS,
     },
-    swapFeePercentage: fp(0.04),
+    swapFeePercentage: fp(0.01),
     poolHooksContract: ZERO_ADDRESS,
     enableDonation: false,
     disableUnbalancedLiquidity: false,
