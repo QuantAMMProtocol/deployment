@@ -160,7 +160,7 @@ export async function createPoolParams(
     assets: tokens,
     rule: ruleAddress,
     oracles,
-    updateInterval: 86400,
+    updateInterval: 86100,
     lambda: lambdas,
     epsilonMax: fp(0.432),
     absoluteWeightGuardRail: fp(0.03),
@@ -170,8 +170,8 @@ export async function createPoolParams(
   };
 
   return {
-    name: 'BTF - Safe Haven - BTC-PAXG-USDC',
-    symbol: 'BTF-SH',
+    name: 'Safe Haven - BTC:PAXG:USDC',
+    symbol: 'BTF:SH',
     tokens: tokenConfig,
     normalizedWeights,
     roleAccounts: {
