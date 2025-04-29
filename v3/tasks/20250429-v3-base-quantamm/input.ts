@@ -119,20 +119,20 @@ export async function createPoolParams(
     rateProvider: rateProviders[i] || ZERO_ADDRESS,
     tokenType: 0,
   }));
-  //NOTE: this is order BTC, USDC
-  const lambdas = [bn('811035769801363300'), bn('289524066401247700')];
+  //NOTE: this is order USDC, BTC
+  const lambdas = [bn('289524066401247700'), bn('811035769801363300')];
   //const lambdas = [bn('0.811035769801363300'), bn('0.289524066401247700')];
 
-  const movingAverages = [bn('90950694357815940000000'), bn('999975466198190900')];
+  const movingAverages = [bn('999975466198190900'), bn('90950694357815940000000')];
   //const movingAverages = [bn('90950.69435781594'), bn('0.9999754661981909')];
 
-  const intermediateValues = [bn('101053147538869670000000'), bn('76674211432404')];
+  const intermediateValues = [bn('76674211432404'), bn('101053147538869670000000')];
   //const intermediateValues = [bn('101053.14753886967'), bn('0.000076674211432404264')];
 
-  //NOTE: this is order BTC, USDC
+  //NOTE: this is order USDC, BTC
   const parameters = [
-    [bn('1390968414526753800000'), bn('255928993330991830000')], //kappa
-    [bn('1531232793117663900'), bn('1000000000000000100')], //exponents
+    [bn('255928993330991830000'), bn('1390968414526753800000')], //kappa
+    [bn('1000000000000000100'), bn('1531232793117663900')], //exponents
   ];
 
   //const parameters = [
@@ -142,8 +142,8 @@ export async function createPoolParams(
 
   //again this is in InputHelper.sortTokens order
   const oracles = [
-    [wbtcOracle], // WBTC
     [usdcOracle], // USDC
+    [wbtcOracle], // WBTC
   ];
 
   const normalizedWeights = [fp(0.03), fp(0.97)];
