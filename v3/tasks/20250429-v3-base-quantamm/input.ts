@@ -9,7 +9,7 @@ export type QuantAMMDeploymentInputParams = {
   PauseWindowDuration: number;
   UpdateWeightRunner: string;
   ETH: string;
-  WBTC: string;
+  CBBTC: string;
   USDC: string;
   FactoryVersion: string;
   PoolVersion: string;
@@ -40,21 +40,9 @@ export default {
   FactoryVersion: JSON.stringify({ name: 'QuantAMMWeightedPoolFactory', ...BaseVersion }),
   PoolVersion: JSON.stringify({ name: 'QuantAMMWeightedPool', ...BaseVersion }),
   UpdateWeightRunner,
-  sepolia: {
-    WBTC: '0x29f2D40B0605204364af54EC677bD022dA425d03',
-    USDC: '0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8',
-  },
-  mainnet: {
-    WBTC: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', //https://etherscan.io/token/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599
-    USDC: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', //https://etherscan.io/token/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
-  },
   base: {
-    WBTC: '0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf', //https://basescan.org/token/0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf
+    CBBTC: '0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf', //https://basescan.org/token/0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf
     USDC: '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913', //https://basescan.org/token/0x833589fcd6edb6e08f4c7c32d4f71b54bda02913
-  },
-  arbitrum: {
-    WBTC: '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f', //https://arbiscan.io/token/0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f
-    USDC: '0xaf88d065e77c8cc2239327c5edb3a432268e5831', //https://arbiscan.io/token/0xaf88d065e77c8cc2239327c5edb3a432268e5831
   },
 };
 
@@ -102,15 +90,15 @@ export type CreationNewPoolParams = {
 };
 
 export async function createPoolParams(
-  wbtcContract: string,
-  wbtcOracle: string,
+  cbbtcContract: string,
+  cbbtcOracle: string,
   usdcContract: string,
   usdcOracle: string,
   ruleAddress: string,
   salt: string,
   sender: string
 ): Promise<CreationNewPoolParams> {
-  const tokens = [wbtcContract, usdcContract]; //address ordering as in InputHelper.sortTokens
+  const tokens = [usdcContract, cbbtcContract]; //address ordering as in InputHelper.sortTokens
 
   const rateProviders: string[] = [];
 
@@ -143,7 +131,7 @@ export async function createPoolParams(
   //again this is in InputHelper.sortTokens order
   const oracles = [
     [usdcOracle], // USDC
-    [wbtcOracle], // WBTC
+    [cbbtcOracle], // cbbtc
   ];
 
   const normalizedWeights = [fp(0.03), fp(0.97)];

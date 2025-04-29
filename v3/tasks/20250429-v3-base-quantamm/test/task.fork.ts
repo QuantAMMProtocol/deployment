@@ -48,7 +48,7 @@ describeForkTest('QuantAMMPool', 'sepolia', 8140847, function () {
     );
 
     params = await createPoolParams(
-      input.WBTC,
+      input.CBBTC,
       input.ChainlinkDataFeedBTC,
       input.USDC,
       input.ChainlinkDataFeedUSDC,

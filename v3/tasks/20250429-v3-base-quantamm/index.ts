@@ -37,7 +37,7 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
       ethers.utils.defaultAbiCoder.encode(['address', 'uint256'], [accountAddress, Math.floor(Date.now() / 1000)])
     );
     const params = await createPoolParams(
-      input.WBTC,
+      input.CBBTC,
       input.ChainlinkDataFeedBTC,
       input.USDC,
       input.ChainlinkDataFeedUSDC,
