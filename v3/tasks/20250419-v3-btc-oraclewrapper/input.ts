@@ -18,4 +18,10 @@ export default {
     ChainlinkDataFeedPAXG: '0x9944D86CEB9160aF5C5feB251FD671923323f8C3', //https://etherscan.io/address/0x9944D86CEB9160aF5C5feB251FD671923323f8C3
     ChainlinkDataFeedUSDC: '0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6', //https://etherscan.io/address/0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6
   },
+  base: {
+    ChainlinkDataFeedBTC: '0x64c911996D3c6aC71f9b455B1E8E7266BcbD848F', //https://basescan.org/address/0x64c911996D3c6aC71f9b455B1E8E7266BcbD848F
+  },
+  arbitrum: {
+    ChainlinkDataFeedBTC: '0x6ce185860a4963106506C203335A2910413708e9', //https://arbiscan.io/address/0x6ce185860a4963106506C203335A2910413708e9
+  },
 };
