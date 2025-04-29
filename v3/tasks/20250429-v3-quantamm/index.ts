@@ -39,8 +39,6 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
     const params = await createPoolParams(
       input.WBTC,
       input.ChainlinkDataFeedBTC,
-      input.PAXG,
-      input.ChainlinkDataFeedPAXG,
       input.USDC,
       input.ChainlinkDataFeedUSDC,
       powerChannelRule.address,
