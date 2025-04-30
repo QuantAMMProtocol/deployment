@@ -18,4 +18,10 @@ export default {
     ChainlinkDataFeedPAXG: '0x9944D86CEB9160aF5C5feB251FD671923323f8C3', //https://etherscan.io/address/0x9944D86CEB9160aF5C5feB251FD671923323f8C3
     ChainlinkDataFeedUSDC: '0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6', //https://etherscan.io/address/0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6
   },
+  base: {
+    ChainlinkDataFeedUSDC: '0x7e860098F58bBFC8648a4311b374B1D669a2bc6B', //https://basescan.org/address/0x7e860098F58bBFC8648a4311b374B1D669a2bc6B
+  },
+  arbitrum: {
+    ChainlinkDataFeedUSDC: '0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3', //https://arbiscan.io/address/0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3
+  },
 };
