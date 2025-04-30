@@ -124,11 +124,11 @@ export async function createPoolParams(
   const lambdas = [bn('811035769801363300'), bn('781490597023096500'), bn('289524066401247700')];
   //const lambdas = [bn('0.811035769801363300'), bn('0.781490597023096500'), bn('0.289524066401247700')];
 
-  const movingAverages = [bn('87861197708756070000000'), bn('3344593283532860000000'), bn('999563142573188700')];
-  //const movingAverages = [bn('87861.19770875607'), bn('3344.593283532860'), bn('0.9995631425731887')];
+  const movingAverages = [bn('90950694357815940000000'), bn('3336288858906452300000'), bn('999975466198190900')];
+  //const movingAverages = [bn('90950.69435781594'), bn('3336.2888589064523'), bn('0.9999754661981909')];
 
-  const intermediateValues = [bn('83310790330153660000000'), bn('937512828745599200000'), bn('-000138761427859390')];
-  //const intermediateValues = [bn('83310.79033015366'), bn('937.5128287455992'), bn('-0.0001387614278593900')];
+  const intermediateValues = [bn('101053147538869670000000'), bn('308546703781671850000'), bn('76674211432404')];
+  //const intermediateValues = [bn('101053.14753886967'), bn('308.54670378167185'), bn('0.000076674211432404264')];
 
   //NOTE: this is order BTC, PAXG, USDC
   const parameters = [
@@ -160,7 +160,7 @@ export async function createPoolParams(
     assets: tokens,
     rule: ruleAddress,
     oracles,
-    updateInterval: 86400,
+    updateInterval: 86100,
     lambda: lambdas,
     epsilonMax: fp(0.432),
     absoluteWeightGuardRail: fp(0.03),
@@ -170,8 +170,8 @@ export async function createPoolParams(
   };
 
   return {
-    name: 'BTF - Safe Haven - BTC-PAXG-USDC',
-    symbol: 'BTF-SH',
+    name: 'Safe Haven - BTC:PAXG:USDC',
+    symbol: 'BTF:SH',
     tokens: tokenConfig,
     normalizedWeights,
     roleAccounts: {
