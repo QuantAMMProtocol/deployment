@@ -124,11 +124,11 @@ export async function createPoolParams(
   const lambdas = [bn('811035769801363300'), bn('781490597023096500'), bn('289524066401247700')];
   //const lambdas = [bn('0.811035769801363300'), bn('0.781490597023096500'), bn('0.289524066401247700')];
 
-  const movingAverages = [bn('90950694357815940000000'), bn('3336288858906452300000'), bn('999975466198190900')];
-  //const movingAverages = [bn('90950.69435781594'), bn('3336.2888589064523'), bn('0.9999754661981909')];
+  const movingAverages = [bn('94567359380691818294336'), bn('3294844558142945560961'), bn('999970803470067485')];
+  //const movingAverages = [bn('94567.359380691818294336'), bn('3294.844558142945560961'), bn('0.999970803470067485')];
 
-  const intermediateValues = [bn('101053147538869670000000'), bn('308546703781671850000'), bn('76674211432404')];
-  //const intermediateValues = [bn('101053.14753886967'), bn('308.54670378167185'), bn('0.000076674211432404264')];
+  const intermediateValues = [bn('47635868284327629363207'), bn('308546703781671850000'), bn('76674211432404')];
+  //const intermediateValues = [bn('47635.868284327629363207'), bn('308.546703781671850000'), bn('0.000076674211432404')];
 
   //NOTE: this is order BTC, PAXG, USDC
   const parameters = [
@@ -153,7 +153,7 @@ export async function createPoolParams(
 
   const poolDetails = [
     ['overview', 'adaptabilityScore', 'number', '5'],
-    ['strategy', 'name', 'string', 'Power Channel'],
+    ['ruleDetails', 'updateRuleName', 'string', 'Power Channel'],
   ];
 
   const poolSettings: PoolSettings = {
