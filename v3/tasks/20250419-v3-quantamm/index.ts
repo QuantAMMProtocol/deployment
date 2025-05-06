@@ -44,8 +44,7 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
       input.USDC,
       input.ChainlinkDataFeedUSDC,
       powerChannelRule.address,
-      salt,
-      accountAddress
+      salt
     );
 
     if (force || !task.output({ ensure: false })['QuantAMMWeightedPool']) {

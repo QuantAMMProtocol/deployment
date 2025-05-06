@@ -108,8 +108,7 @@ export async function createPoolParams(
   usdcContract: string,
   usdcOracle: string,
   ruleAddress: string,
-  salt: string,
-  sender: string
+  salt: string
 ): Promise<CreationNewPoolParams> {
   const tokens = [wbtcContract, paxgContract, usdcContract]; //address ordering as in InputHelper.sortTokens
 
