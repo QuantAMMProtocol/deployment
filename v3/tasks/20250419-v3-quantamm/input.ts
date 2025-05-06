@@ -127,8 +127,8 @@ export async function createPoolParams(
   const movingAverages = [bn('94567359380691818294336'), bn('3294844558142945560961'), bn('999970803470067485')];
   //const movingAverages = [bn('94567.359380691818294336'), bn('3294.844558142945560961'), bn('0.999970803470067485')];
 
-  const intermediateValues = [bn('47635868284327629363207'), bn('308546703781671850000'), bn('76674211432404')];
-  //const intermediateValues = [bn('47635.868284327629363207'), bn('308.546703781671850000'), bn('0.000076674211432404')];
+  const intermediateValues = [bn('47635868284327629363207'), bn('-150717792671372191976'), bn('301361446142')];
+  //const intermediateValues = [bn('47635.868284327629363207'), bn('-150.717792671372191976'), bn('0.000000301361446142')];
 
   //NOTE: this is order BTC, PAXG, USDC
   const parameters = [
