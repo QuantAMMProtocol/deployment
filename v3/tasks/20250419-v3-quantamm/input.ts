@@ -166,7 +166,7 @@ export async function createPoolParams(
     absoluteWeightGuardRail: fp(0.03),
     maxTradeSizeRatio: fp(0.1),
     ruleParameters: parameters,
-    poolManager: sender,
+    poolManager: '0xd785201fd2D9be7602F6682296Bb415530C027Ef',
   };
 
   return {
@@ -177,9 +177,9 @@ export async function createPoolParams(
     roleAccounts: {
       pauseManager: ZERO_ADDRESS,
       swapFeeManager: ZERO_ADDRESS,
-      poolCreator: ZERO_ADDRESS,
+      poolCreator: '0xd785201fd2D9be7602F6682296Bb415530C027Ef',
     },
-    swapFeePercentage: fp(0.01),
+    swapFeePercentage: fp(0.02),
     poolHooksContract: ZERO_ADDRESS,
     enableDonation: false,
     disableUnbalancedLiquidity: false,
