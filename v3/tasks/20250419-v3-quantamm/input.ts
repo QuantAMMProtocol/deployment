@@ -108,7 +108,8 @@ export async function createPoolParams(
   usdcContract: string,
   usdcOracle: string,
   ruleAddress: string,
-  salt: string
+  salt: string,
+  sender: string
 ): Promise<CreationNewPoolParams> {
   const tokens = [wbtcContract, paxgContract, usdcContract]; //address ordering as in InputHelper.sortTokens
 
@@ -147,8 +148,8 @@ export async function createPoolParams(
     [usdcOracle], // USDC
   ];
 
-  const normalizedWeights = [bn('439096623787103273'), bn('462022194873375888'), fp('98881181339520839')];
-  //const normalizedWeights = [bn('0.439096623787103273'), bn('0.462022194873375888'), fp('0.098881181339520839')];
+  const normalizedWeights = [bn('439096623000000000'), bn('462022194000000000'), bn('98881183000000000')];
+  //const normalizedWeights = [bn('0.439096623000000000'), bn('0.462022194000000000'), fp('0.098881183000000000')];
   const intNormalizedWeights = [...normalizedWeights];
 
   const poolDetails = [
@@ -166,18 +167,18 @@ export async function createPoolParams(
     absoluteWeightGuardRail: fp(0.03),
     maxTradeSizeRatio: fp(0.1),
     ruleParameters: parameters,
-    poolManager: '0xd785201fd2D9be7602F6682296Bb415530C027Ef',
+    poolManager: sender,
   };
 
   return {
     name: 'Safe Haven-BTC:PAXG:USDC',
-    symbol: 'BTF-SH',
+    symbol: 'BTFSH',
     tokens: tokenConfig,
     normalizedWeights,
     roleAccounts: {
       pauseManager: ZERO_ADDRESS,
       swapFeeManager: ZERO_ADDRESS,
-      poolCreator: '0xd785201fd2D9be7602F6682296Bb415530C027Ef',
+      poolCreator: ZERO_ADDRESS,
     },
     swapFeePercentage: fp(0.02),
     poolHooksContract: ZERO_ADDRESS,
