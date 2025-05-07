@@ -123,11 +123,11 @@ export async function createPoolParams(
   const lambdas = [bn('811035769801363300'), bn('781490597023096500'), bn('289524066401247700')];
   //const lambdas = [bn('0.811035769801363300'), bn('0.781490597023096500'), bn('0.289524066401247700')];
 
-  const movingAverages = [bn('94567359380691818294336'), bn('3294844558142945560961'), bn('999970803470067485')];
-  //const movingAverages = [bn('94567.359380691818294336'), bn('3294.844558142945560961'), bn('0.999970803470067485')];
+  const movingAverages = [bn('94942928796381976374946'), bn('3318477539169648631581'), bn('999995937643198773')];
+  //const movingAverages = [bn('94942.928796381976374946'), bn('3318.477539169648631581'), bn('0.999995937643198773')];
 
-  const intermediateValues = [bn('47635868284327629363207'), bn('-150717792671372191976'), bn('301361446142')];
-  //const intermediateValues = [bn('47635.868284327629363207'), bn('-150.717792671372191976'), bn('0.000000301361446142')];
+  const intermediateValues = [bn('47164825037595406235540'), bn('269029300295401773334'), bn('14503442449845')];
+  //const intermediateValues = [bn('47164.825037595406235540'), bn('269.029300295401773334'), bn('0.000014503442449845')];
 
   //NOTE: this is order BTC, PAXG, USDC
   const parameters = [
@@ -147,7 +147,8 @@ export async function createPoolParams(
     [usdcOracle], // USDC
   ];
 
-  const normalizedWeights = [fp(0.03), fp(0.94), fp(0.03)];
+  const normalizedWeights = [bn('439096623787103273'), bn('462022194873375888'), fp('98881181339520839')];
+  //const normalizedWeights = [bn('0.439096623787103273'), bn('0.462022194873375888'), fp('0.098881181339520839')];
   const intNormalizedWeights = [...normalizedWeights];
 
   const poolDetails = [
@@ -169,8 +170,8 @@ export async function createPoolParams(
   };
 
   return {
-    name: 'Safe Haven - BTC:PAXG:USDC',
-    symbol: 'BTF:SH',
+    name: 'Safe Haven-BTC:PAXG:USDC',
+    symbol: 'BTF-SH',
     tokens: tokenConfig,
     normalizedWeights,
     roleAccounts: {
