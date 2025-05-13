@@ -124,11 +124,11 @@ export async function createPoolParams(
   const lambdas = [bn('811035769801363300'), bn('781490597023096500'), bn('289524066401247700')];
   //const lambdas = [bn('0.811035769801363300'), bn('0.781490597023096500'), bn('0.289524066401247700')];
 
-  const movingAverages = [bn('90950694357815940000000'), bn('3336288858906452300000'), bn('999975466198190900')];
-  //const movingAverages = [bn('90950.69435781594'), bn('3336.2888589064523'), bn('0.9999754661981909')];
+  const movingAverages = [bn('94942928796381976374946'), bn('3318477539169648631581'), bn('999995937643198773')];
+  //const movingAverages = [bn('94942.928796381976374946'), bn('3318.477539169648631581'), bn('0.999995937643198773')];
 
-  const intermediateValues = [bn('101053147538869670000000'), bn('308546703781671850000'), bn('76674211432404')];
-  //const intermediateValues = [bn('101053.14753886967'), bn('308.54670378167185'), bn('0.000076674211432404264')];
+  const intermediateValues = [bn('47164825037595406235540'), bn('269029300295401773334'), bn('14503442449845')];
+  //const intermediateValues = [bn('47164.825037595406235540'), bn('269.029300295401773334'), bn('0.000014503442449845')];
 
   //NOTE: this is order BTC, PAXG, USDC
   const parameters = [
@@ -148,12 +148,13 @@ export async function createPoolParams(
     [usdcOracle], // USDC
   ];
 
-  const normalizedWeights = [fp(0.03), fp(0.94), fp(0.03)];
+  const normalizedWeights = [bn('439096623000000000'), bn('462022194000000000'), bn('98881183000000000')];
+  //const normalizedWeights = [bn('0.439096623000000000'), bn('0.462022194000000000'), fp('0.098881183000000000')];
   const intNormalizedWeights = [...normalizedWeights];
 
   const poolDetails = [
     ['overview', 'adaptabilityScore', 'number', '5'],
-    ['strategy', 'name', 'string', 'Power Channel'],
+    ['ruleDetails', 'updateRuleName', 'string', 'Power Channel'],
   ];
 
   const poolSettings: PoolSettings = {
@@ -170,8 +171,8 @@ export async function createPoolParams(
   };
 
   return {
-    name: 'Safe Haven - BTC:PAXG:USDC',
-    symbol: 'BTF:SH',
+    name: 'Safe Haven-BTC:PAXG:USDC',
+    symbol: 'BTFSH',
     tokens: tokenConfig,
     normalizedWeights,
     roleAccounts: {
@@ -179,7 +180,7 @@ export async function createPoolParams(
       swapFeeManager: ZERO_ADDRESS,
       poolCreator: ZERO_ADDRESS,
     },
-    swapFeePercentage: fp(0.01),
+    swapFeePercentage: fp(0.02),
     poolHooksContract: ZERO_ADDRESS,
     enableDonation: false,
     disableUnbalancedLiquidity: false,
