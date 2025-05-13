@@ -6,7 +6,7 @@ import * as expectEvent from '@helpers/expectEvent';
 import { createPoolParams, CreationNewPoolParams, QuantAMMDeploymentInputParams } from '../input';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 
-describeForkTest('QuantAMMPool', 'sepolia', 8140847, function () {
+describeForkTest('QuantAMMPool', 'base', 30191684, function () {
   let task: Task;
   let factory: Contract, pool: Contract, rule: Contract, updateWeightRunner: Contract;
   let input: QuantAMMDeploymentInputParams;
@@ -15,7 +15,7 @@ describeForkTest('QuantAMMPool', 'sepolia', 8140847, function () {
   let accounts: SignerWithAddress[];
   let sender: SignerWithAddress;
 
-  const TASK_NAME = '20250429-v3-quantamm';
+  const TASK_NAME = '20250429-v3-base-quantamm';
   const POOL_CONTRACT_NAME = 'QuantAMMWeightedPool';
   const FACTORY_CONTRACT_NAME = POOL_CONTRACT_NAME + 'Factory';
 
@@ -42,16 +42,21 @@ describeForkTest('QuantAMMPool', 'sepolia', 8140847, function () {
     await updateWeightRunner.addOracle(input.ChainlinkDataFeedBTC);
     await updateWeightRunner.addOracle(input.ChainlinkDataFeedUSDC);
     await updateWeightRunner.addOracle(input.ChainlinkFeedETH);
+    await updateWeightRunner.addOracle(input.ChainlinkDataFeedAERO);
 
     const salt = ethers.utils.keccak256(
       ethers.utils.defaultAbiCoder.encode(['address', 'uint256'], [sender.address, Math.floor(Date.now() / 1000)])
     );
 
     params = await createPoolParams(
-      input.CBBTC,
-      input.ChainlinkDataFeedBTC,
+      input.ETH,
+      input.ChainlinkFeedETH,
       input.USDC,
       input.ChainlinkDataFeedUSDC,
+      input.AERO,
+      input.ChainlinkDataFeedAERO,
+      input.CBBTC,
+      input.ChainlinkDataFeedBTC,
       powerChannelRule.address,
       salt,
       sender.address

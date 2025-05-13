@@ -37,10 +37,14 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
       ethers.utils.defaultAbiCoder.encode(['address', 'uint256'], [accountAddress, Math.floor(Date.now() / 1000)])
     );
     const params = await createPoolParams(
-      input.CBBTC,
-      input.ChainlinkDataFeedBTC,
+      input.ETH,
+      input.ChainlinkFeedETH,
       input.USDC,
       input.ChainlinkDataFeedUSDC,
+      input.AERO,
+      input.ChainlinkDataFeedAERO,
+      input.CBBTC,
+      input.ChainlinkDataFeedBTC,
       powerChannelRule.address,
       salt,
       accountAddress
@@ -49,17 +53,17 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
     if (force || !task.output({ ensure: false })['QuantAMMWeightedPool']) {
       const poolCreationReceipt = await (await factory.create(params)).wait();
       const event = expectEvent.inReceipt(poolCreationReceipt, 'PoolCreated');
-      const safeHavenPoolAddress = event.args.pool;
-      console.log('mockPoolAddress', safeHavenPoolAddress);
+      const baseMacroPoolAddress = event.args.pool;
+      console.log('mockPoolAddress', baseMacroPoolAddress);
       console.log('poolCreationReceipt', poolCreationReceipt.transactionHash);
 
       await saveContractDeploymentTransactionHash(
-        safeHavenPoolAddress,
+        baseMacroPoolAddress,
         poolCreationReceipt.transactionHash,
         task.network
       );
 
-      await task.save({ QuantAMMWeightedPool: safeHavenPoolAddress });
+      await task.save({ QuantAMMWeightedPool: baseMacroPoolAddress });
     }
 
     const poolParams = {
@@ -72,9 +76,9 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
       poolDetails: params.poolDetails,
     };
 
-    const safeHavenPool = await task.instanceAt('QuantAMMWeightedPool', task.output()['QuantAMMWeightedPool']);
+    const baseMacro = await task.instanceAt('QuantAMMWeightedPool', task.output()['QuantAMMWeightedPool']);
 
     // We are now ready to verify the Pool
-    await task.verify('QuantAMMWeightedPool', safeHavenPool.address, [poolParams, input.Vault]);
+    await task.verify('QuantAMMWeightedPool', baseMacro.address, [poolParams, input.Vault]);
   }
 };
