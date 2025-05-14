@@ -37,7 +37,7 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
       ethers.utils.defaultAbiCoder.encode(['address', 'uint256'], [accountAddress, Math.floor(Date.now() / 1000)])
     );
     const params = await createPoolParams(
-      input.ETH,
+      input.WETH,
       input.ChainlinkFeedETH,
       input.USDC,
       input.ChainlinkDataFeedUSDC,
@@ -51,6 +51,7 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
     );
 
     if (force || !task.output({ ensure: false })['QuantAMMWeightedPool']) {
+      console.log('Creating pool with params', params);
       const poolCreationReceipt = await (await factory.create(params)).wait();
       const event = expectEvent.inReceipt(poolCreationReceipt, 'PoolCreated');
       const baseMacroPoolAddress = event.args.pool;

@@ -8,7 +8,7 @@ export type QuantAMMDeploymentInputParams = {
   Vault: string;
   PauseWindowDuration: number;
   UpdateWeightRunner: string;
-  ETH: string;
+  WETH: string;
   CBBTC: string;
   USDC: string;
   AERO: string;
@@ -191,8 +191,8 @@ export async function createPoolParams(
   };
 
   return {
-    name: 'BASE MACRO-WETH:USDC:AERO:cbBTC',
-    symbol: 'BTF:BMAC',
+    name: 'BASE MACRO - WETH:USDC:AERO:cbBTC',
+    symbol: 'BTF:BMACRO',
     tokens: tokenConfig,
     normalizedWeights,
     roleAccounts: {
@@ -200,7 +200,7 @@ export async function createPoolParams(
       swapFeeManager: ZERO_ADDRESS,
       poolCreator: ZERO_ADDRESS,
     },
-    swapFeePercentage: fp(0.0003),
+    swapFeePercentage: fp(0.003),
     poolHooksContract: ZERO_ADDRESS,
     enableDonation: false,
     disableUnbalancedLiquidity: false,
