@@ -20,8 +20,8 @@ export type QuantAMMDeploymentInputParams = {
   ChainlinkDataFeedUSDC: string;
 };
 
-//TODO double check with Jeff this is network specific
-const Vault = new Task('20241204-v3-vault', TaskMode.READ_ONLY);
+//Ttaken from the beets site
+const Vault = '0xbA1333333333a1BA1108E8412f11850A5C319bA9'; //https://sonicscan.org/address/0xbA1333333333a1BA1108E8412f11850A5C319bA9
 
 const EthChainlinkOracleWrapper = new Task('20250419-v3-eth-oraclewrapper', TaskMode.READ_ONLY);
 
@@ -47,7 +47,7 @@ export default {
   UpdateWeightRunner,
   sepolia: {
     WBTC: '0x29f2D40B0605204364af54EC677bD022dA425d03',
-    SONIC: '0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9', //no PAXG on Sepolia
+    SONIC: '0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9', //no SONIC on Sepolia
     USDC: '0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8',
     WETH: '0x45804880de22913dafe09f4980848ece6ecbaf78',
   },
@@ -124,7 +124,7 @@ export async function createPoolParams(
     rateProvider: rateProviders[i] || ZERO_ADDRESS,
     tokenType: 0,
   }));
-  //NOTE: this is order BTC, PAXG, USDC
+  //NOTE: this is order BTC, SONIC, USDC
   const lambdas = [
     bn('811035769801363300'),
     bn('781490597023096500'),
@@ -149,7 +149,7 @@ export async function createPoolParams(
   ];
   //const intermediateValues = [bn('47164.825037595406235540'), bn('269.029300295401773334'), bn('0.000014503442449845')];
 
-  //NOTE: this is order BTC, PAXG, USDC
+  //NOTE: this is order BTC, SONIC, USDC
   const parameters = [
     [
       bn('1390968414526753800000'),
@@ -168,7 +168,7 @@ export async function createPoolParams(
   //again this is in InputHelper.sortTokens order
   const oracles = [
     [wbtcOracle], // WBTC
-    [sonicOracle], // PAXG
+    [sonicOracle], // SONIC
     [ethOracle], // USDC
     [usdcOracle], // USDC
   ];
