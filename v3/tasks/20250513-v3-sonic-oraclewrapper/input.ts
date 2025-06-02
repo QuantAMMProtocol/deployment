@@ -4,6 +4,6 @@ export type QuantAMMDeploymentInputParams = {
 
 export default {
   base: {
-    ChainlinkDataFeedSONIC: '0x4EC5970fC728C5f65ba413992CD5fF6FD70fcfF0', //https://basescan.org/address/0x4EC5970fC728C5f65ba413992CD5fF6FD70fcfF0
+    ChainlinkDataFeedSONIC: '0x824364077993847f71293B24ccA8567c00c2de11', //https://sonicscan.org/address/0x824364077993847f71293B24ccA8567c00c2de11
   },
 };

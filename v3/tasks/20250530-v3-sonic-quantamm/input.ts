@@ -29,7 +29,7 @@ const BtcChainlinkOracleWrapper = new Task('20250419-v3-btc-oraclewrapper', Task
 
 const UsdcChainlinkOracleWrapper = new Task('20250419-v3-usdc-oraclewrapper', TaskMode.READ_ONLY);
 
-const SonicChainlinkOracleWrapper = new Task('20250419-v3-sonic-oraclewrapper', TaskMode.READ_ONLY);
+const SonicChainlinkOracleWrapper = new Task('20250513-v3-sonic-oraclewrapper', TaskMode.READ_ONLY);
 
 const UpdateWeightRunner = new Task('20250419-v3-update-weight-runner', TaskMode.READ_ONLY);
 
