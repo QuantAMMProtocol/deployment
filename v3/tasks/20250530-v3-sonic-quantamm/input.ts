@@ -52,10 +52,10 @@ export default {
     WETH: '0x45804880de22913dafe09f4980848ece6ecbaf78',
   },
   sonic: {
-    WBTC: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
-    SONIC: '0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9',
-    WETH: '0x45804880de22913dafe09f4980848ece6ecbaf78',
-    USDC: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+    SONIC: '0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38', //https://sonicscan.org/token/0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38
+    WETH: '0x50c42deacd8fc9773493ed674b675be577f2634b', //https://sonicscan.org/token/0x50c42deacd8fc9773493ed674b675be577f2634b
+    WBTC: '0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd', //https://sonicscan.org/token/0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd
+    USDC: '0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae', //https://sonicscan.org/token/0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae
   },
 };
 
@@ -115,7 +115,7 @@ export async function createPoolParams(
   salt: string,
   sender: string
 ): Promise<CreationNewPoolParams> {
-  const tokens = [wbtcContract, sonicContract, ethContract, usdcContract]; //address ordering as in InputHelper.sortTokens
+  const tokens = [sonicContract, ethContract, wbtcContract, usdcContract]; //address ordering as in InputHelper.sortTokens
 
   const rateProviders: string[] = [];
 
@@ -167,9 +167,9 @@ export async function createPoolParams(
 
   //again this is in InputHelper.sortTokens order
   const oracles = [
-    [wbtcOracle], // WBTC
     [sonicOracle], // SONIC
     [ethOracle], // USDC
+    [wbtcOracle], // WBTC
     [usdcOracle], // USDC
   ];
 
