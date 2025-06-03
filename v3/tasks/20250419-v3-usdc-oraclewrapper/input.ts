@@ -24,4 +24,7 @@ export default {
   arbitrum: {
     ChainlinkDataFeedUSDC: '0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3', //https://arbiscan.io/address/0x50834F3163758fcC1Df9973b6e91f0F0F0434aD3
   },
+  sonic: {
+    ChainlinkDataFeedUSDC: '0x55bCa887199d5520B3Ce285D41e6dC10C08716C9', //https://sonicscan.org/address/0x55bCa887199d5520B3Ce285D41e6dC10C08716C9
+  },
 };
