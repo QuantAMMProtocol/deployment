@@ -47,7 +47,7 @@ export default {
   UpdateWeightRunner,
   sonic: {
     SONIC: '0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38', //https://sonicscan.org/token/0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38
-    USDC: '0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae', //https://sonicscan.org/token/0x29219dd400f2bf60e5a23d13be72b486d4038894
+    USDC: '0x29219dd400f2bf60e5a23d13be72b486d4038894', //https://sonicscan.org/token/0x29219dd400f2bf60e5a23d13be72b486d4038894
     WETH: '0x50c42deacd8fc9773493ed674b675be577f2634b', //https://sonicscan.org/token/0x50c42deacd8fc9773493ed674b675be577f2634b
     scBTC: '0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd', //https://sonicscan.org/token/0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd
   },
