@@ -8,10 +8,10 @@ export type QuantAMMDeploymentInputParams = {
   Vault: string;
   PauseWindowDuration: number;
   UpdateWeightRunner: string;
-  ETH: string;
-  WBTC: string;
+  WETH: string;
+  scBTC: string;
   SONIC: string;
-  USDC: string;
+  scUSD: string;
   FactoryVersion: string;
   PoolVersion: string;
   ChainlinkFeedETH: string;
@@ -45,17 +45,11 @@ export default {
   FactoryVersion: JSON.stringify({ name: 'QuantAMMWeightedPoolFactory', ...BaseVersion }),
   PoolVersion: JSON.stringify({ name: 'QuantAMMWeightedPool', ...BaseVersion }),
   UpdateWeightRunner,
-  sepolia: {
-    WBTC: '0x29f2D40B0605204364af54EC677bD022dA425d03',
-    SONIC: '0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9', //no SONIC on Sepolia
-    USDC: '0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8',
-    WETH: '0x45804880de22913dafe09f4980848ece6ecbaf78',
-  },
   sonic: {
     SONIC: '0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38', //https://sonicscan.org/token/0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38
     WETH: '0x50c42deacd8fc9773493ed674b675be577f2634b', //https://sonicscan.org/token/0x50c42deacd8fc9773493ed674b675be577f2634b
-    WBTC: '0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd', //https://sonicscan.org/token/0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd
-    USDC: '0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae', //https://sonicscan.org/token/0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae
+    scBTC: '0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd', //https://sonicscan.org/token/0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd
+    scUSD: '0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae', //https://sonicscan.org/token/0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae
   },
 };
 
@@ -103,19 +97,19 @@ export type CreationNewPoolParams = {
 };
 
 export async function createPoolParams(
-  wbtcContract: string,
-  wbtcOracle: string,
+  scBTCContract: string,
+  btcOracle: string,
   sonicContract: string,
   sonicOracle: string,
   ethContract: string,
   ethOracle: string,
-  usdcContract: string,
+  scUSDContract: string,
   usdcOracle: string,
   ruleAddress: string,
   salt: string,
   sender: string
 ): Promise<CreationNewPoolParams> {
-  const tokens = [sonicContract, ethContract, wbtcContract, usdcContract]; //address ordering as in InputHelper.sortTokens
+  const tokens = [sonicContract, ethContract, scBTCContract, scUSDContract]; //address ordering as in InputHelper.sortTokens
 
   const rateProviders: string[] = [];
 
@@ -124,7 +118,7 @@ export async function createPoolParams(
     rateProvider: rateProviders[i] || ZERO_ADDRESS,
     tokenType: 0,
   }));
-  //NOTE: this is order BTC, SONIC, USDC
+  //NOTE: this is order scBTC, SONIC, USDC
   const lambdas = [
     bn('811035769801363300'),
     bn('781490597023096500'),
@@ -149,7 +143,7 @@ export async function createPoolParams(
   ];
   //const intermediateValues = [bn('47164.825037595406235540'), bn('269.029300295401773334'), bn('0.000014503442449845')];
 
-  //NOTE: this is order BTC, SONIC, USDC
+  //NOTE: this is order scBTC, SONIC, USDC
   const parameters = [
     [
       bn('1390968414526753800000'),
@@ -169,7 +163,7 @@ export async function createPoolParams(
   const oracles = [
     [sonicOracle], // SONIC
     [ethOracle], // USDC
-    [wbtcOracle], // WBTC
+    [btcOracle], // WBTC
     [usdcOracle], // USDC
   ];
 
