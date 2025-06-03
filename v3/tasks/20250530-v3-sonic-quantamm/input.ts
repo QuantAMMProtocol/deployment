@@ -11,7 +11,7 @@ export type QuantAMMDeploymentInputParams = {
   WETH: string;
   scBTC: string;
   SONIC: string;
-  scUSD: string;
+  USDC: string;
   FactoryVersion: string;
   PoolVersion: string;
   ChainlinkFeedETH: string;
@@ -47,9 +47,9 @@ export default {
   UpdateWeightRunner,
   sonic: {
     SONIC: '0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38', //https://sonicscan.org/token/0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38
+    USDC: '0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae', //https://sonicscan.org/token/0x29219dd400f2bf60e5a23d13be72b486d4038894
     WETH: '0x50c42deacd8fc9773493ed674b675be577f2634b', //https://sonicscan.org/token/0x50c42deacd8fc9773493ed674b675be577f2634b
     scBTC: '0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd', //https://sonicscan.org/token/0xbb30e76d9bb2cc9631f7fc5eb8e87b5aff32bfbd
-    scUSD: '0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae', //https://sonicscan.org/token/0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae
   },
 };
 
@@ -103,13 +103,13 @@ export async function createPoolParams(
   sonicOracle: string,
   ethContract: string,
   ethOracle: string,
-  scUSDContract: string,
+  USDCContract: string,
   usdcOracle: string,
   ruleAddress: string,
   salt: string,
   sender: string
 ): Promise<CreationNewPoolParams> {
-  const tokens = [sonicContract, ethContract, scBTCContract, scUSDContract]; //address ordering as in InputHelper.sortTokens
+  const tokens = [sonicContract, USDCContract, ethContract, scBTCContract]; //address ordering as in InputHelper.sortTokens
 
   const rateProviders: string[] = [];
 
@@ -118,7 +118,7 @@ export async function createPoolParams(
     rateProvider: rateProviders[i] || ZERO_ADDRESS,
     tokenType: 0,
   }));
-  //NOTE: this is order scBTC, SONIC, USDC
+
   const lambdas = [
     bn('811035769801363300'),
     bn('781490597023096500'),
@@ -143,7 +143,6 @@ export async function createPoolParams(
   ];
   //const intermediateValues = [bn('47164.825037595406235540'), bn('269.029300295401773334'), bn('0.000014503442449845')];
 
-  //NOTE: this is order scBTC, SONIC, USDC
   const parameters = [
     [
       bn('1390968414526753800000'),
@@ -162,9 +161,9 @@ export async function createPoolParams(
   //again this is in InputHelper.sortTokens order
   const oracles = [
     [sonicOracle], // SONIC
-    [ethOracle], // USDC
-    [btcOracle], // WBTC
     [usdcOracle], // USDC
+    [ethOracle], // eth
+    [btcOracle], // WBTC
   ];
 
   const normalizedWeights = [

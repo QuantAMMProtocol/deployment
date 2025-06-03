@@ -43,7 +43,7 @@ export default async (task: Task, { force, from }: TaskRunOptions = {}): Promise
       input.ChainlinkDataFeedSONIC,
       input.WETH,
       input.ChainlinkFeedETH,
-      input.scUSD,
+      input.USDC,
       input.ChainlinkDataFeedUSDC,
       powerChannelRule.address,
       salt,
