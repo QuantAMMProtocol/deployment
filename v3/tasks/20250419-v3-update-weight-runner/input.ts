@@ -24,4 +24,8 @@ export default {
     QuantAMMAdmin: '0xd785201fd2D9be7602F6682296Bb415530C027Ef',
     ChainlinkFeedETH: EthChainlinkOracleWrapper,
   },
+  sonic: {
+    QuantAMMAdmin: '0xd785201fd2D9be7602F6682296Bb415530C027Ef',
+    ChainlinkFeedETH: EthChainlinkOracleWrapper,
+  },
 };

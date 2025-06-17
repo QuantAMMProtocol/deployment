@@ -24,4 +24,7 @@ export default {
   arbitrum: {
     ChainlinkDataFeedBTC: '0x6ce185860a4963106506C203335A2910413708e9', //https://arbiscan.io/address/0x6ce185860a4963106506C203335A2910413708e9
   },
+  sonic: {
+    ChainlinkDataFeedBTC: '0x8Bcd59Cb7eEEea8e2Da3080C891609483dae53EF', //https://sonicscan.org/address/0x8Bcd59Cb7eEEea8e2Da3080C891609483dae53EF
+  },
 };
