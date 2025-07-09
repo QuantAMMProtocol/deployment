@@ -480,6 +480,14 @@ export default {
         },
       },
       {
+        network: 'sonic',
+        chainId: 146,
+        urls: {
+          apiURL: 'https://api.sonicscan.org/api',
+          browserURL: 'https://sonicscan.org/',
+        },
+      },
+      {
         network: 'base',
         chainId: 8453,
         urls: {
