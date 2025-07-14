@@ -208,8 +208,8 @@ export async function createPoolParams(
   };
 
   return {
-    name: 'TEST - SONIC - DO NOT USE',
-    symbol: 'TESTBTFS',
+    name: 'SONIC MACRO BTF',
+    symbol: 'SONIC-MACRO-BTF',
     tokens: tokenConfig,
     normalizedWeights,
     roleAccounts: {
@@ -217,7 +217,7 @@ export async function createPoolParams(
       swapFeeManager: ZERO_ADDRESS,
       poolCreator: ZERO_ADDRESS,
     },
-    swapFeePercentage: fp(0.02),
+    swapFeePercentage: fp(0.005),
     poolHooksContract: ZERO_ADDRESS,
     enableDonation: false,
     disableUnbalancedLiquidity: false,
